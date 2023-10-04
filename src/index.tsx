@@ -1,12 +1,22 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
+import ReactDOM from "react-dom/client";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import HomePage from "./Pages/HomePage/HomePage";
+import BrandsPage from "./Pages/BrandsPage/BrandsPage";
+import NotFoundPage from "./Pages/NotFoundPage/NotFoundPage";
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <HomePage />,
+    errorElement: <NotFoundPage />,
+  },
+  {
+    path: "/brands",
+    element: <BrandsPage />,
+    errorElement: <NotFoundPage />,
+  },
+]);
+
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+  <RouterProvider router={router} />
 );
