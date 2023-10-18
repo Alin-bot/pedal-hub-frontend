@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import HomePage from "./Pages/HomePage/HomePage";
-import BrandsPage from "./Pages/BrandsPage/BrandsPage";
-import NotFoundPage from "./Pages/NotFoundPage/NotFoundPage";
-import BrandDetailsPage from "./Pages/BrandsPage/Details/BrandDetailsPage";
-import BikesPage from "./Pages/BikesPage/BikesPage";
-import BikeDetailsPage from "./Pages/BikesPage/Details/BikeDetailsPage";
+import HomePage from "./components/HomePage/HomePage";
+import BrandsPage from "./components/BrandsPage/BrandsPage";
+import NotFoundPage from "./components/NotFoundPage/NotFoundPage";
+import BrandDetailsPage from "./components/BrandsPage/Details/BrandDetailsPage";
+import BikeDetailsPage from "./components/BikesPage/Details/BikeDetailsPage";
+import BikesPage from "./components/BikesPage/BikesPage";
 
 const router = createBrowserRouter([
   {
@@ -25,15 +25,19 @@ const router = createBrowserRouter([
     errorElement: <NotFoundPage />,
   },
   {
-    path: "bikes",
+    path: "/bikes",
     element: <BikesPage />,
     errorElement: <NotFoundPage />,
   },
   {
-    path: "bikes/:bikeId",
+    path: "/bikes/:bikeId",
     element: <BikeDetailsPage />,
     errorElement: <NotFoundPage />,
   },
+  {
+    path: "/add",
+    
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(

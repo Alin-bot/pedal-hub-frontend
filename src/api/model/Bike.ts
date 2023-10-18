@@ -1,4 +1,17 @@
-type Category = "enduro" | "crossCountry" | "trail" | "downhill";
+export interface Category {
+  id: number;
+  name: string;
+  description: string;
+  childCategories: [];
+  parentCategory: string;
+}
+
+export interface Groupset {
+  id: number;
+  name: string;
+  make: string;
+  type: string;
+}
 
 export interface IBike {
   id: number;
@@ -8,17 +21,6 @@ export interface IBike {
   frameMaterial: string;
   brakesType: string;
   suspensionType: string;
-  category: {
-    id: number;
-    name: string;
-    description: string;
-    childCategories: [];
-    parentCategory: string;
-  };
-  groupset: {
-    id: number;
-    name: string;
-    make: string;
-    type: string;
-  };
+  category: Category;
+  groupset: Groupset;
 }

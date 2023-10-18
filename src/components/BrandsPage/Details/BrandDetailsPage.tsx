@@ -3,10 +3,7 @@ import { useParams } from "react-router-dom";
 import { IBrand } from "../../../api/model/Brand";
 import { useEffect, useState } from "react";
 import { BrandServiceImpl, IBrandService } from "../../../api/BrandApi";
-
-function lowercaseFirstLetter(string: string) {
-  return string.charAt(0).toLowerCase() + string.slice(1);
-}
+import { CircularProgress, TextField } from "@mui/material";
 
 const brandService: IBrandService = new BrandServiceImpl();
 
@@ -33,7 +30,10 @@ const BrandDetailsPage = () => {
     };
   }, []);
 
-  return (
+  return loadingItems ? 
+  <CircularProgress /> : !brand ? (
+    <TextField label="No brand found" disabled variant="standard" />) :
+  (
     <div>
       <h1>{brand?.name}</h1>
       <p>{brand?.description}</p>
