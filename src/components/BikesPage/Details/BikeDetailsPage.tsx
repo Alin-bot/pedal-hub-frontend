@@ -27,7 +27,7 @@ const BrandDetailsPage = () => {
     return () => {
       isMounted = false;
     };
-  }, []);
+  }, [bikeId]);
 
   return loadingItems ? (
     <CircularProgress />

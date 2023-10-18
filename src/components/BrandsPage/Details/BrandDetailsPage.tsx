@@ -28,7 +28,7 @@ const BrandDetailsPage = () => {
     return () => {
       isMounted = false;
     };
-  }, []);
+  }, [brandId]);
 
   return loadingItems ? 
   <CircularProgress /> : !brand ? (
