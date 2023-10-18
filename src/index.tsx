@@ -5,6 +5,8 @@ import HomePage from "./Pages/HomePage/HomePage";
 import BrandsPage from "./Pages/BrandsPage/BrandsPage";
 import NotFoundPage from "./Pages/NotFoundPage/NotFoundPage";
 import BrandDetailsPage from "./Pages/BrandsPage/Details/BrandDetailsPage";
+import BikesPage from "./Pages/BikesPage/BikesPage";
+import BikeDetailsPage from "./Pages/BikesPage/Details/BikeDetailsPage";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +22,16 @@ const router = createBrowserRouter([
   {
     path: "/brands/:brandId",
     element: <BrandDetailsPage />,
+    errorElement: <NotFoundPage />,
+  },
+  {
+    path: "bikes",
+    element: <BikesPage />,
+    errorElement: <NotFoundPage />,
+  },
+  {
+    path: "bikes/:bikeId",
+    element: <BikeDetailsPage />,
     errorElement: <NotFoundPage />,
   },
 ]);

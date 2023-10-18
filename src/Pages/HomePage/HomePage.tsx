@@ -16,6 +16,14 @@ const HomePage = () => {
       >
         View Brands
       </Button>
+      <Button
+        variant="contained"
+        color="primary"
+        endIcon={<SendIcon />}
+        onClick={() => navigate("/bikes")}
+      >
+        View Bikes
+      </Button>
     </>
   );
 };

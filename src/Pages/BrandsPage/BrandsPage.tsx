@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Box, Button, Stack } from "@mui/material";
+import { Box, Button, CircularProgress, Stack, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { BrandServiceImpl, IBrandService } from "../../api/BrandApi";
 import { IBrand } from "../../api/model/Brand";
@@ -10,7 +10,7 @@ const BrandsPage = () => {
   const navigate = useNavigate();
 
   const [loadingItems, setLoadingItems] = useState<boolean>();
-  const [brands, setBrands] = useState<IBrand[]>();
+  const [brands, setBrands] = useState<IBrand[]>([]);
 
   useEffect(() => {
     let isMounted = true;
@@ -31,7 +31,11 @@ const BrandsPage = () => {
     };
   }, []);
 
-  return brands ? (
+  return loadingItems ? (
+    <CircularProgress />
+  ) : !brands ? (
+    <TextField label="No brands found" disabled variant="standard" />
+  ) : (
     <Box
       sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
     >
@@ -47,8 +51,6 @@ const BrandsPage = () => {
         ))}
       </Stack>
     </Box>
-  ) : (
-    <div>Loading...</div>
   );
 };
 

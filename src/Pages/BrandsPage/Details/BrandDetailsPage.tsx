@@ -11,6 +11,7 @@ function lowercaseFirstLetter(string: string) {
 const brandService: IBrandService = new BrandServiceImpl();
 
 const BrandDetailsPage = () => {
+  const [loadingItems, setLoadingItems] = useState<boolean>();
   const { brandId } = useParams<{ brandId: string }>();
   const [brand, setBrand] = useState<IBrand>();
 
@@ -18,10 +19,12 @@ const BrandDetailsPage = () => {
     let isMounted = true;
 
     const fetchBrand = async () => {
+      setLoadingItems(true);
       const response = await brandService.getBrandById(Number(brandId));
 
       if (!isMounted) return;
       setBrand(response.data);
+      setLoadingItems(false);
     };
     fetchBrand();
 
