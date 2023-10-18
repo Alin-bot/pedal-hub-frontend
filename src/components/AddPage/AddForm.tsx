@@ -1,12 +1,14 @@
 import { Box, Button, Stack, TextField } from "@mui/material";
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { BrandServiceImpl, IBrandService } from "../../api/BrandApi";
 import { IBrand } from "../../api/model/Brand";
 
 const brandService: IBrandService = new BrandServiceImpl();
 
 const AddPage = () => {
+  const navigate = useNavigate();
+
   const [name, setName] = React.useState("");
   const [description, setDescription] = React.useState("");
   const [country, setCountry] = React.useState("");
@@ -20,6 +22,7 @@ const AddPage = () => {
     } as IBrand);
 
     alert("Form Submitted");
+    navigate("/brands");
   };
 
   return (

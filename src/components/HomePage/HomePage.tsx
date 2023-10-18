@@ -1,13 +1,14 @@
 import React from "react";
-import { Button } from "@mui/material";
+import { Button, Stack } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
   const navigate = useNavigate();
   return (
-    <>
+    <Stack direction="column" width={500}>
       <h1>Home Page</h1>
+      <Stack direction="column" spacing={2} width={300}>
       <Button
         variant="contained"
         color="secondary"
@@ -24,7 +25,16 @@ const HomePage = () => {
       >
         View Bikes
       </Button>
-    </>
+      <Button
+        variant="contained"
+        color="success"
+        endIcon={<SendIcon />}
+        onClick={() => navigate("/add")}
+      >
+        Add Brand
+      </Button>
+      </Stack>
+    </Stack>
   );
 };
 
