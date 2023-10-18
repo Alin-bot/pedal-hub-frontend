@@ -39,6 +39,7 @@ const BikesPage = () => {
     <Box
       sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
     >
+      <Button onClick={() => navigate(`/`)}>Home</Button>
       <Stack spacing={2} direction="row">
         {bikes.map((bike) => (
           <Button
