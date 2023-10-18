@@ -18,7 +18,7 @@ const router = createBrowserRouter([
     errorElement: <NotFoundPage />,
   },
   {
-    path: "/brands/:brandName",
+    path: "/brands/:brandId",
     element: <BrandDetailsPage />,
     errorElement: <NotFoundPage />,
   },

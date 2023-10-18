@@ -1,21 +1,39 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { IBrand } from "../../../api/model/Brand";
+import { useEffect, useState } from "react";
+import { BrandServiceImpl, IBrandService } from "../../../api/BrandApi";
 
 function lowercaseFirstLetter(string: string) {
   return string.charAt(0).toLowerCase() + string.slice(1);
 }
 
+const brandService: IBrandService = new BrandServiceImpl();
+
 const BrandDetailsPage = () => {
-  const { brandName } = useParams<{ brandName: string }>();
-  const brandDetails: IBrand = require(`../../../data/${lowercaseFirstLetter(
-    brandName!
-  )}.json`);
+  const { brandId } = useParams<{ brandId: string }>();
+  const [brand, setBrand] = useState<IBrand>();
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const fetchBrand = async () => {
+      const response = await brandService.getBrandById(Number(brandId));
+
+      if (!isMounted) return;
+      setBrand(response.data);
+    };
+    fetchBrand();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   return (
     <div>
-      <h1>{brandDetails?.name}</h1>
-      <p>{brandDetails?.description}</p>
+      <h1>{brand?.name}</h1>
+      <p>{brand?.description}</p>
     </div>
   );
 };
