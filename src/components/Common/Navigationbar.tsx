@@ -21,6 +21,7 @@ const NavigationBar = (props: NavigateBarProps) => {
       display="flex"
       flexDirection="row"
       p={1}
+      mb={2}
     >
       <Box display="flex" alignItems="center" height="100%">
         <Box color="white" fontSize={20} fontWeight="bold">
