@@ -3,6 +3,7 @@ import { BikeServiceImpl, IBikeService } from "../../api/BikesApi";
 import { IBike } from "../../api/model/Bike";
 import { Box, Button, CircularProgress, Stack, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import NavigationBar from "../Common/Navigationbar";
 
 const bikeService: IBikeService = new BikeServiceImpl();
 
@@ -36,28 +37,22 @@ const BikesPage = () => {
   ) : !bikes ? (
     <TextField label="No bikes found" disabled variant="standard" />
   ) : (
-    <Box display="flex" flexDirection="column" p={3}>
-      <Box width={200}>
-        <Button
-          onClick={() => navigate(`/`)}
-          variant="outlined"
-          color="success"
-        >
-          Home
-        </Button>
+    <>
+      <NavigationBar leftText="Bikes list" />
+      <Box display="flex" flexDirection="column" p={3}>
+        <Stack direction="column" width={200} spacing={2} mt={5}>
+          {bikes.map((bike) => (
+            <Button
+              key={bike.id}
+              variant="contained"
+              onClick={() => navigate(`/bikes/${bike.id}`)}
+            >
+              {bike.name}
+            </Button>
+          ))}
+        </Stack>
       </Box>
-      <Stack direction="column" width={200} spacing={2} mt={5}>
-        {bikes.map((bike) => (
-          <Button
-            key={bike.id}
-            variant="outlined"
-            onClick={() => navigate(`/bikes/${bike.id}`)}
-          >
-            {bike.name}
-          </Button>
-        ))}
-      </Stack>
-    </Box>
+    </>
   );
 };
 

@@ -7,7 +7,7 @@ import NotFoundPage from "./components/NotFoundPage/NotFoundPage";
 import BrandDetailsPage from "./components/BrandsPage/Details/BrandDetailsPage";
 import BikeDetailsPage from "./components/BikesPage/Details/BikeDetailsPage";
 import BikesPage from "./components/BikesPage/BikesPage";
-import AddPage from "./components/AddPage/AddForm";
+import AddBrandPage from "./components/AddPage/AddBrandForm";
 
 const router = createBrowserRouter([
   {
@@ -37,9 +37,9 @@ const router = createBrowserRouter([
   },
   {
     path: "/add",
-    element: <AddPage />,
+    element: <AddBrandPage />,
     errorElement: <NotFoundPage />,
-  }
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(

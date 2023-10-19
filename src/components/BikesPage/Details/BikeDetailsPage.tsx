@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { BikeServiceImpl, IBikeService } from "../../../api/BikesApi";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { IBike } from "../../../api/model/Bike";
-import { Box, Button, CircularProgress, TextField } from "@mui/material";
+import { Box, CircularProgress, TextField } from "@mui/material";
+import NavigationBar from "../../Common/Navigationbar";
 
 const bikeService: IBikeService = new BikeServiceImpl();
 
 const BrandDetailsPage = () => {
-  const navigate = useNavigate();
 
   const [loadingItems, setLoadingItems] = useState<boolean>();
   const { bikeId } = useParams<{ bikeId: string }>();
@@ -31,26 +31,41 @@ const BrandDetailsPage = () => {
     };
   }, [bikeId]);
 
+  const displayBileDetails = (
+    detailsList: { label: string; value: string }[]
+  ) => {
+    return (
+      <Box width={400}>
+        {detailsList.map((detail) => (
+          <div key={detail.label}>
+            <p>
+              {detail.label}: {detail.value}
+            </p>
+          </div>
+        ))}
+      </Box>
+    );
+  };
+
   return loadingItems ? (
     <CircularProgress />
   ) : !bike ? (
     <TextField label="No bike found" disabled variant="standard" />
   ) : (
-    <Box display="flex" flexDirection="column" p={3}>
-      <Box width={200}>
-        <Button
-          onClick={() => navigate(-1)}
-          variant="outlined"
-          color="success"
-        >
-          Back
-        </Button>
+    <>
+      <NavigationBar leftText={`Bike name: ${bike.name}`} />
+      <Box display="flex" flexDirection="column" p={3}>
+        <Box width={200}></Box>
+        <Box width={400}>Bike details:</Box>
+        {displayBileDetails([
+          { label: "Year", value: bike.year.toString() },
+          { label: "Price", value: bike.price.toString() },
+          { label: "Frame Material", value: bike.frameMaterial },
+          { label: "Brakes type", value: bike.brakesType },
+          { label: "Suspension type", value: bike.suspensionType },
+        ])}
       </Box>
-      <div>
-        <h1>{bike?.name}</h1>
-        <p>{bike?.year}</p>
-      </div>
-    </Box>
+    </>
   );
 };
 

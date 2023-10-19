@@ -6,7 +6,7 @@ import { IBrand } from "../../api/model/Brand";
 
 const brandService: IBrandService = new BrandServiceImpl();
 
-const AddPage = () => {
+const AddBrandPage = () => {
   const navigate = useNavigate();
 
   const [name, setName] = React.useState("");
@@ -60,4 +60,4 @@ const AddPage = () => {
   );
 };
 
-export default AddPage;
+export default AddBrandPage;
