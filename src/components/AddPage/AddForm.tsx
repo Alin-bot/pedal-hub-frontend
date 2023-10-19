@@ -28,13 +28,7 @@ const AddPage = () => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
+        <Box display="flex" flexDirection="column" alignItems="center">
           <Stack
             direction="column"
             width={300}

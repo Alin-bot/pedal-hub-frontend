@@ -36,10 +36,17 @@ const BrandsPage = () => {
   ) : !brands ? (
     <TextField label="No brands found" disabled variant="standard" />
   ) : (
-    <Box
-      sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
-    >
-      <Stack spacing={2} direction="row">
+    <Box display="flex" flexDirection="column" p={3}>
+      <Box width={200}>
+        <Button
+          onClick={() => navigate(`/`)}
+          variant="outlined"
+          color="success"
+        >
+          Home
+        </Button>
+      </Box>
+      <Stack direction="column" width={200} spacing={2} mt={5}>
         {brands.map((brand) => (
           <Button
             key={brand.id}
