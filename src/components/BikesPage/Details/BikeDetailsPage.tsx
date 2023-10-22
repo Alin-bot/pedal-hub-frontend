@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BikeServiceImpl, IBikeService } from "../../../api/BikesApi";
+import { BikeServiceImpl, IBikeService } from "../../../api/BikeApi";
 import { useParams } from "react-router-dom";
 import { IBike } from "../../../api/model/IBike";
 import { Box, CircularProgress, TextField } from "@mui/material";

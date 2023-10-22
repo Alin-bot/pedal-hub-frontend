@@ -1,7 +1,13 @@
-import { Autocomplete, Box, Button, Stack, TextField } from "@mui/material";
+import {
+  Autocomplete,
+  Box,
+  Button,
+  Stack,
+  TextField,
+} from "@mui/material";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { BikeServiceImpl, IBikeService } from "../../../api/BikesApi";
+import { BikeServiceImpl, IBikeService } from "../../../api/BikeApi";
 import {
   BrakeSystem,
   BrakesType,
@@ -10,8 +16,14 @@ import {
   IBike,
   SuspensionType,
 } from "../../../api/model/IBike";
+import {
+  GroupsetServiceImpl,
+  IGroupsetService,
+} from "../../../api/GroupsetApi";
+import AutocompleteAsync from "../AutocompleteAsync";
 
 const bikeService: IBikeService = new BikeServiceImpl();
+const groupsetsService: IGroupsetService = new GroupsetServiceImpl();
 
 const AddBikePage = () => {
   const navigate = useNavigate();
@@ -114,24 +126,21 @@ const AddBikePage = () => {
                 <TextField {...params} label="Suspension type" />
               )}
             />
-
-            {/*
-            <TextField
+            {/* <AutocompleteAsync
+              asyncPromise={groupsetsService.getGroupsets()}
               label="Brand"
-              onChange={(e) => setBrandId(Number(e.target.value))}
-              required
+              setValues={() => setBrandId}
             />
-            <TextField
+            <AutocompleteAsync
+              asyncPromise={groupsetsService.getGroupsets()}
               label="Category"
-              onChange={(e) => setCategory(e.target.value)}
-              required
-            />
-            <TextField
+              setValues={() => setCategory}
+            /> */}
+            <AutocompleteAsync
+              asyncPromise={groupsetsService.getGroupsets()}
               label="Groupset"
-              onChange={(e) => setGroupset(e.target.value)}
-              required
+              setValues={() => setGroupset}
             />
-            */}
             <Button variant="outlined" color="secondary" type="submit">
               Submit
             </Button>
