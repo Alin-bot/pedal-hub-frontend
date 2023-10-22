@@ -9,33 +9,31 @@ const HomePage = () => {
   return (
     <>
       <NavigationBar leftText={`Home page`} />
-      <Stack direction="column" width={500}>
-        <Stack direction="column" spacing={2} width={300}>
-          <Button
-            variant="contained"
-            color="secondary"
-            endIcon={<SendIcon />}
-            onClick={() => navigate("/brands")}
-          >
-            View Brands
-          </Button>
-          <Button
-            variant="contained"
-            color="primary"
-            endIcon={<SendIcon />}
-            onClick={() => navigate("/bikes")}
-          >
-            View Bikes
-          </Button>
-          <Button
-            variant="contained"
-            color="success"
-            endIcon={<SendIcon />}
-            onClick={() => navigate("/add")}
-          >
-            Add Brand
-          </Button>
-        </Stack>
+      <Stack direction="column" spacing={2} width={300} ml={1}>
+        <Button
+          variant="contained"
+          color="secondary"
+          endIcon={<SendIcon />}
+          onClick={() => navigate("/brands")}
+        >
+          View Brands
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          endIcon={<SendIcon />}
+          onClick={() => navigate("/bikes")}
+        >
+          View Bikes
+        </Button>
+        <Button
+          variant="contained"
+          color="success"
+          endIcon={<SendIcon />}
+          onClick={() => navigate("/add")}
+        >
+          Add Brand
+        </Button>
       </Stack>
     </>
   );

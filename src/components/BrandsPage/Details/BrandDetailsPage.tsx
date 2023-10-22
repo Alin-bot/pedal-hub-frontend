@@ -4,6 +4,7 @@ import { IBrand } from "../../../api/model/Brand";
 import { useEffect, useState } from "react";
 import { BrandServiceImpl, IBrandService } from "../../../api/BrandApi";
 import { Box, Button, CircularProgress, TextField } from "@mui/material";
+import NavigationBar from "../../Common/Navigationbar";
 
 const brandService: IBrandService = new BrandServiceImpl();
 
@@ -37,21 +38,23 @@ const BrandDetailsPage = () => {
   ) : !brand ? (
     <TextField label="No brand found" disabled variant="standard" />
   ) : (
-    <Box display="flex" flexDirection="column" p={3}>
-      <Box width={200}>
-        <Button
-          onClick={() => navigate(-1)}
-          variant="outlined"
-          color="success"
-        >
-          Back
-        </Button>
+    <>
+      <NavigationBar leftText={`Brand name: ${brand.name}`} />
+      <Box display="flex" flexDirection="column" p={3}>
+        <Box width={200}>
+          <Button
+            onClick={() => navigate(-1)}
+            variant="outlined"
+            color="success"
+          >
+            Back
+          </Button>
+        </Box>
+        <div>
+          <p>{brand.description}</p>
+        </div>
       </Box>
-      <div>
-        <h1>{brand?.name}</h1>
-        <p>{brand?.description}</p>
-      </div>
-    </Box>
+    </>
   );
 };
 
