@@ -4,6 +4,7 @@ import { Fragment, useEffect, useState } from "react";
 type AutocompleteAsyncProps = {
   asyncPromise: Promise<{ data: any }>;
   label: string;
+  // eslint-disable-next-line
   setValues: ({}: any) => void;
 };
 // TODO: fix (doesn't set the value)
