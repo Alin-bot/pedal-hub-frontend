@@ -1,5 +1,5 @@
 import { Box, Button, Stack, TextField } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { BrandServiceImpl, IBrandService } from "../../../api/BrandApi";
 import { IBrand } from "../../../api/model/IBrand";
@@ -9,9 +9,9 @@ const brandService: IBrandService = new BrandServiceImpl();
 const AddBrandPage = () => {
   const navigate = useNavigate();
 
-  const [name, setName] = React.useState("");
-  const [description, setDescription] = React.useState("");
-  const [country, setCountry] = React.useState("");
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [country, setCountry] = useState("");
 
   const handleSubmit = (event: any) => {
     event.preventDefault();

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BikeServiceImpl, IBikeService } from "../../api/BikesApi";
-import { BikeDTO, IBike } from "../../api/model/IBike";
+import { BikeDTO } from "../../api/model/IBike";
 import { Box, Button, CircularProgress, Stack, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import NavigationBar from "../Common/Navigationbar";

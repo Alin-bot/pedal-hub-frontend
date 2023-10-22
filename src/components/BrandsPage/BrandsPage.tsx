@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Box, Button, CircularProgress, Stack, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { BrandServiceImpl, IBrandService } from "../../api/BrandApi";
-import { BrandDTO, IBrand } from "../../api/model/IBrand";
+import { BrandDTO } from "../../api/model/IBrand";
 import NavigationBar from "../Common/Navigationbar";
 
 const brandService: IBrandService = new BrandServiceImpl();

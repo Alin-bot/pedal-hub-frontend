@@ -1,6 +1,5 @@
 import React from "react";
 import { Button, ButtonGroup, Stack } from "@mui/material";
-import SendIcon from "@mui/icons-material/Send";
 import { useNavigate } from "react-router-dom";
 import NavigationBar from "../Common/Navigationbar";
 

@@ -41,6 +41,7 @@ export interface IBike {
   name: string;
   year: number;
   price: number;
+  brandId: number;
   frameMaterial: FrameMaterial;
   brakeSystem: BrakeSystem;
   brakesType: BrakesType;

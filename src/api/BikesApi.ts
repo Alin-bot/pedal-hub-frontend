@@ -9,6 +9,7 @@ export interface IBikeService {
     category: string,
     year: string
   ): Promise<{ data: IBike[] }>;
+  addBike(brand: IBike): Promise<{ data: IBike }>;
 }
 
 export class BikeServiceImpl implements IBikeService {
@@ -31,5 +32,9 @@ export class BikeServiceImpl implements IBikeService {
     year: string
   ): Promise<{ data: IBike[] }> {
     return axiosClient.get(`/bikes/category/${category}/year/${year}`);
+  }
+
+  public async addBike(brand: IBike): Promise<{ data: IBike }> {
+    return axiosClient.post("/bikes", brand);
   }
 }

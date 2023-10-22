@@ -1,27 +1,46 @@
-import { Box, Button, Stack, TextField } from "@mui/material";
+import { Autocomplete, Box, Button, Stack, TextField } from "@mui/material";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { BikeServiceImpl, IBikeService } from "../../../api/BikesApi";
+import {
+  BrakeSystem,
+  BrakesType,
+  FrameMaterial,
+  Groupset,
+  IBike,
+  SuspensionType,
+} from "../../../api/model/IBike";
 
 const bikeService: IBikeService = new BikeServiceImpl();
 
 const AddBikePage = () => {
   const navigate = useNavigate();
 
-  const [name, setName] = useState("");
-  const [year, setYear] = useState("");
-  const [price, setPrice] = useState("");
-  const [frameMaterial, setFrameMaterial] = useState("");
-  const [brakeSystem, setBrakeSystem] = useState("");
-  const [brakesType, setBrakesType] = useState("");
-  const [suspensionType, setSuspensionType] = useState("");
-  const [category, setCategory] = useState("");
-  const [groupset, setGroupset] = useState("");
+  const [name, setName] = useState<string>();
+  const [year, setYear] = useState<number>();
+  const [price, setPrice] = useState<number>();
+  const [brandId, setBrandId] = useState<number>();
+  const [frameMaterial, setFrameMaterial] = useState<FrameMaterial>();
+  const [brakeSystem, setBrakeSystem] = useState<BrakeSystem>();
+  const [brakesType, setBrakesType] = useState<BrakesType>();
+  const [suspensionType, setSuspensionType] = useState<SuspensionType>();
+  const [category, setCategory] = useState<{ id: number; name: string }>();
+  const [groupset, setGroupset] = useState<Groupset>();
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    // bikeService.addBike({
-    // } as IBike);
+    bikeService.addBike({
+      name: name!,
+      year: year!,
+      price: price!,
+      brandId: brandId!,
+      frameMaterial: frameMaterial!,
+      brakeSystem: brakeSystem!,
+      brakesType: brakesType!,
+      suspensionType: suspensionType!,
+      category: category!,
+      groupset: groupset!,
+    } as IBike);
 
     alert("Form Submitted");
     navigate("/bikes");
@@ -39,32 +58,67 @@ const AddBikePage = () => {
             />
             <TextField
               label="Year"
-              onChange={(e) => setYear(e.target.value)}
+              onChange={(e) => setYear(Number(e.target.value))}
               required
             />
             <TextField
               label="Price"
-              onChange={(e) => setPrice(e.target.value)}
+              onChange={(e) => setPrice(Number(e.target.value))}
               required
             />
-            <TextField
-              label="Frame material"
-              onChange={(e) => setFrameMaterial(e.target.value)}
-              required
+            <Autocomplete
+              id="frame-material"
+              value={frameMaterial}
+              onChange={(event: any, newValue: FrameMaterial | null) => {
+                setFrameMaterial(newValue!);
+              }}
+              options={Object.values(FrameMaterial)}
+              sx={{ width: 300 }}
+              renderInput={(params) => (
+                <TextField {...params} label="Frame Material" />
+              )}
             />
-            <TextField
-              label="Brakes type"
-              onChange={(e) => setBrakesType(e.target.value)}
-              required
+            <Autocomplete
+              id="brakes-type"
+              value={brakesType}
+              onChange={(event: any, newValue: BrakesType | null) => {
+                setBrakesType(newValue!);
+              }}
+              options={Object.values(BrakesType)}
+              sx={{ width: 300 }}
+              renderInput={(params) => (
+                <TextField {...params} label="Brakes type" />
+              )}
             />
-            <TextField
-              label="Brake system"
-              onChange={(e) => setBrakeSystem(e.target.value)}
-              required
+            <Autocomplete
+              id="brake-system"
+              value={brakeSystem}
+              onChange={(event: any, newValue: BrakeSystem | null) => {
+                setBrakeSystem(newValue!);
+              }}
+              options={Object.values(BrakeSystem)}
+              sx={{ width: 300 }}
+              renderInput={(params) => (
+                <TextField {...params} label="Brake system" />
+              )}
             />
+            <Autocomplete
+              id="suspenstion-type"
+              value={suspensionType}
+              onChange={(event: any, newValue: SuspensionType | null) => {
+                setSuspensionType(newValue!);
+              }}
+              options={Object.values(SuspensionType)}
+              sx={{ width: 300 }}
+              renderInput={(params) => (
+                <TextField {...params} label="Suspension type" />
+              )}
+            />
+
+            {/*
             <TextField
-              label="Suspension type"
-              onChange={(e) => setSuspensionType(e.target.value)}
+              label="Brand"
+              onChange={(e) => setBrandId(Number(e.target.value))}
               required
             />
             <TextField
@@ -77,6 +131,7 @@ const AddBikePage = () => {
               onChange={(e) => setGroupset(e.target.value)}
               required
             />
+            */}
             <Button variant="outlined" color="secondary" type="submit">
               Submit
             </Button>

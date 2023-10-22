@@ -1,16 +1,14 @@
 import React from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { IBrand } from "../../../api/model/IBrand";
 import { useEffect, useState } from "react";
 import { BrandServiceImpl, IBrandService } from "../../../api/BrandApi";
-import { Box, Button, CircularProgress, TextField } from "@mui/material";
+import { Box, CircularProgress, TextField } from "@mui/material";
 import NavigationBar from "../../Common/Navigationbar";
 
 const brandService: IBrandService = new BrandServiceImpl();
 
 const BrandDetailsPage = () => {
-  const navigate = useNavigate();
-
   const [loadingItems, setLoadingItems] = useState<boolean>();
   const { brandId } = useParams<{ brandId: string }>();
   const [brand, setBrand] = useState<IBrand>();
