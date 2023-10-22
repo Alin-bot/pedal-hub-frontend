@@ -126,7 +126,7 @@ const AddBikePage = () => {
                 <TextField {...params} label="Suspension type" />
               )}
             />
-            {/* <AutocompleteAsync
+            <AutocompleteAsync
               asyncPromise={groupsetsService.getGroupsets()}
               label="Brand"
               setValues={() => setBrandId}
@@ -135,7 +135,7 @@ const AddBikePage = () => {
               asyncPromise={groupsetsService.getGroupsets()}
               label="Category"
               setValues={() => setCategory}
-            /> */}
+            />
             <AutocompleteAsync
               asyncPromise={groupsetsService.getGroupsets()}
               label="Groupset"

@@ -33,7 +33,7 @@ const AutocompleteAsync = <T extends { name: string }>(
     return () => {
       isMounted = false;
     };
-  }, [loading]);
+  }, [loading, asyncPromise]);
 
   useEffect(() => {
     if (!open) {
@@ -53,7 +53,7 @@ const AutocompleteAsync = <T extends { name: string }>(
         setOpen(false);
       }}
       onChange={(event: any, newValue: T | null) => {
-        setValues(newValue!);
+        setValues(newValue);
       }}
       getOptionLabel={(option) => option.name}
       options={options}
