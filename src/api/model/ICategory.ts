@@ -1,4 +1,4 @@
-import { IBike } from "./Bike";
+import { IBike } from "./IBike";
 
 export interface ICategory {
   id: number;
@@ -8,3 +8,8 @@ export interface ICategory {
   parentCategory: string;
   bikeList: IBike[];
 }
+
+export type CategoryDTO = {
+  id: number;
+  name: string;
+};

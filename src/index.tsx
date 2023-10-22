@@ -7,7 +7,8 @@ import NotFoundPage from "./components/NotFoundPage/NotFoundPage";
 import BrandDetailsPage from "./components/BrandsPage/Details/BrandDetailsPage";
 import BikeDetailsPage from "./components/BikesPage/Details/BikeDetailsPage";
 import BikesPage from "./components/BikesPage/BikesPage";
-import AddBrandPage from "./components/AddPage/AddBrandForm";
+import AddBrandPage from "./components/Common/Form/AddBrandForm";
+import AddBikePage from "./components/Common/Form/AddBikeForm";
 
 const router = createBrowserRouter([
   {
@@ -36,8 +37,13 @@ const router = createBrowserRouter([
     errorElement: <NotFoundPage />,
   },
   {
-    path: "/add",
+    path: "/addbrand",
     element: <AddBrandPage />,
+    errorElement: <NotFoundPage />,
+  },
+  {
+    path: "/addbike",
+    element: <AddBikePage />,
     errorElement: <NotFoundPage />,
   },
 ]);

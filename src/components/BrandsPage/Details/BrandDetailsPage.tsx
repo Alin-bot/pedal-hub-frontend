@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { IBrand } from "../../../api/model/Brand";
+import { IBrand } from "../../../api/model/IBrand";
 import { useEffect, useState } from "react";
 import { BrandServiceImpl, IBrandService } from "../../../api/BrandApi";
 import { Box, Button, CircularProgress, TextField } from "@mui/material";
@@ -41,15 +41,6 @@ const BrandDetailsPage = () => {
     <>
       <NavigationBar leftText={`Brand name: ${brand.name}`} />
       <Box display="flex" flexDirection="column" p={3}>
-        <Box width={200}>
-          <Button
-            onClick={() => navigate(-1)}
-            variant="outlined"
-            color="success"
-          >
-            Back
-          </Button>
-        </Box>
         <div>
           <p>{brand.description}</p>
         </div>

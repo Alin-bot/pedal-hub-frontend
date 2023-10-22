@@ -1,14 +1,14 @@
 import { axiosClient } from "./Api";
-import { IBrand } from "./model/Brand";
+import { BrandDTO, IBrand } from "./model/IBrand";
 
 export interface IBrandService {
-  getBrands(): Promise<{ data: IBrand[] }>;
+  getBrands(): Promise<{ data: BrandDTO[] }>;
   getBrandById(id: number): Promise<{ data: IBrand }>;
   addBrand(brand: IBrand): Promise<{ data: IBrand }>;
 }
 
 export class BrandServiceImpl implements IBrandService {
-  public async getBrands(): Promise<{ data: IBrand[] }> {
+  public async getBrands(): Promise<{ data: BrandDTO[] }> {
     return axiosClient.get("/brands");
   }
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BikeServiceImpl, IBikeService } from "../../api/BikesApi";
-import { IBike } from "../../api/model/Bike";
+import { BikeDTO, IBike } from "../../api/model/IBike";
 import { Box, Button, CircularProgress, Stack, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import NavigationBar from "../Common/Navigationbar";
@@ -11,7 +11,7 @@ const BikesPage = () => {
   const navigate = useNavigate();
 
   const [loadingItems, setLoadingItems] = useState<boolean>();
-  const [bikes, setBikes] = useState<IBike[]>();
+  const [bikes, setBikes] = useState<BikeDTO[]>();
 
   useEffect(() => {
     let isMounted = true;

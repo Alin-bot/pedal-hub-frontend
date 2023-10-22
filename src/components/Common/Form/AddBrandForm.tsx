@@ -1,8 +1,8 @@
 import { Box, Button, Stack, TextField } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { BrandServiceImpl, IBrandService } from "../../api/BrandApi";
-import { IBrand } from "../../api/model/Brand";
+import { BrandServiceImpl, IBrandService } from "../../../api/BrandApi";
+import { IBrand } from "../../../api/model/IBrand";
 
 const brandService: IBrandService = new BrandServiceImpl();
 
@@ -28,7 +28,7 @@ const AddBrandPage = () => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <Box display="flex" flexDirection="column" alignItems="center">
+        <Box display="flex" flexDirection="column" alignItems="center" p={2}>
           <Stack
             direction="column"
             width={300}

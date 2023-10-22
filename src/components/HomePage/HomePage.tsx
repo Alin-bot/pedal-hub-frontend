@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Stack } from "@mui/material";
+import { Button, ButtonGroup, Stack } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import { useNavigate } from "react-router-dom";
 import NavigationBar from "../Common/Navigationbar";
@@ -10,30 +10,38 @@ const HomePage = () => {
     <>
       <NavigationBar leftText={`Home page`} />
       <Stack direction="column" spacing={2} width={300} ml={1}>
-        <Button
-          variant="contained"
-          color="secondary"
-          endIcon={<SendIcon />}
-          onClick={() => navigate("/brands")}
-        >
-          View Brands
-        </Button>
-        <Button
-          variant="contained"
-          color="primary"
-          endIcon={<SendIcon />}
-          onClick={() => navigate("/bikes")}
-        >
-          View Bikes
-        </Button>
-        <Button
-          variant="contained"
-          color="success"
-          endIcon={<SendIcon />}
-          onClick={() => navigate("/add")}
-        >
-          Add Brand
-        </Button>
+        <ButtonGroup variant="outlined" aria-label="outlined button group">
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => navigate("/bikes")}
+          >
+            View Bikes
+          </Button>
+          <Button
+            variant="contained"
+            color="success"
+            onClick={() => navigate("/addbike")}
+          >
+            Add Bike
+          </Button>
+        </ButtonGroup>
+        <ButtonGroup variant="outlined" aria-label="outlined button group">
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={() => navigate("/brands")}
+          >
+            View Brands
+          </Button>
+          <Button
+            variant="contained"
+            color="error"
+            onClick={() => navigate("/addbrand")}
+          >
+            Add Brand
+          </Button>
+        </ButtonGroup>
       </Stack>
     </>
   );

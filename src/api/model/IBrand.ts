@@ -5,3 +5,8 @@ export interface IBrand {
   logo: string;
   description: string;
 }
+
+export type BrandDTO = {
+  id: number;
+  name: string;
+};
