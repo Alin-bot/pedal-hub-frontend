@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BikeServiceImpl, IBikeService } from "../../api/BikeApi";
 import { BikeDTO } from "../../api/model/IBike";
-import { Box, Button, CircularProgress, Stack, TextField } from "@mui/material";
+import { Box, Button, CircularProgress, Grid, Stack, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import NavigationBar from "../Common/Navigationbar";
 
@@ -39,19 +39,24 @@ const BikesPage = () => {
   ) : (
     <>
       <NavigationBar leftText="Bikes list" />
-      <Box display="flex" flexDirection="column" p={3}>
-        <Stack direction="column" width={200} spacing={2} mt={5}>
+      <Grid container>
           {bikes.map((bike) => (
-            <Button
-              key={bike.id}
-              variant="contained"
-              onClick={() => navigate(`/bikes/${bike.id}`)}
-            >
-              {bike.name}
-            </Button>
+            <Grid item xs={2} height={200} display="flex" alignItems="center">
+            <Box width={200} height="100%">
+              <Box height={150} border="solid"></Box>
+              <Button
+                fullWidth
+                key={bike.id}
+                variant="contained"
+                color="success"
+                onClick={() => navigate(`/bikes/${bike.id}`)}
+              >
+                {bike.name}
+              </Button>
+            </Box>
+          </Grid>
           ))}
-        </Stack>
-      </Box>
+      </Grid>
     </>
   );
 };
