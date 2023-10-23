@@ -2,13 +2,12 @@ import React, { useEffect, useState } from "react";
 import { BikeServiceImpl, IBikeService } from "../../../api/BikeApi";
 import { useParams } from "react-router-dom";
 import { IBike } from "../../../api/model/IBike";
-import { Box, CircularProgress, TextField } from "@mui/material";
+import { Box, CircularProgress, Stack, TextField } from "@mui/material";
 import NavigationBar from "../../Common/Navigationbar";
 
 const bikeService: IBikeService = new BikeServiceImpl();
 
 const BrandDetailsPage = () => {
-
   const [loadingItems, setLoadingItems] = useState<boolean>();
   const { bikeId } = useParams<{ bikeId: string }>();
   const [bike, setBike] = useState<IBike>();
@@ -35,15 +34,15 @@ const BrandDetailsPage = () => {
     detailsList: { label: string; value: string }[]
   ) => {
     return (
-      <Box width={400}>
+      <Stack flexWrap="wrap" direction="row" gap={2}>
         {detailsList.map((detail) => (
-          <div key={detail.label}>
+          <Stack key={detail.label} border="solid" borderRadius={2} p={1}>
             <p>
               {detail.label}: {detail.value}
             </p>
-          </div>
+          </Stack>
         ))}
-      </Box>
+      </Stack>
     );
   };
 
@@ -54,17 +53,21 @@ const BrandDetailsPage = () => {
   ) : (
     <>
       <NavigationBar leftText={`Bike name: ${bike.name}`} />
-      <Box display="flex" flexDirection="column" p={3}>
-        <Box width={200}></Box>
-        <Box width={400}>Bike details:</Box>
-        {displayBileDetails([
-          { label: "Year", value: bike.year.toString() },
-          { label: "Price", value: bike.price.toString() },
-          { label: "Frame Material", value: bike.frameMaterial },
-          { label: "Brakes type", value: bike.brakesType },
-          { label: "Suspension type", value: bike.suspensionType },
-        ])}
-      </Box>
+      <Stack alignItems="center" mt={2}>
+        <p>{`${bike.brandID} + ${bike.name} + ${bike.year}`}</p>
+        <Box border="dotted" width={600} height={350}></Box>
+
+        <Stack width={1000} bgcolor="grey" borderRadius={2} p={2} mt={5}>
+          <p>Bike details:</p>
+          {displayBileDetails([
+            { label: "Year", value: bike.year.toString() },
+            { label: "Price", value: bike.price.toString() },
+            { label: "Frame Material", value: bike.frameMaterial },
+            { label: "Brakes type", value: bike.brakesType },
+            { label: "Suspension type", value: bike.suspensionType },
+          ])}
+        </Stack>
+      </Stack>
     </>
   );
 };
