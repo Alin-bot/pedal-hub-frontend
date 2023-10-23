@@ -36,9 +36,10 @@ export enum SuspensionType {
   rigid = "rigid",
 }
 
-export interface IBike extends BikeDTO{
+export interface IBike extends BikeDTO {
   year: number;
   price: number;
+  brandId: number;
   frameMaterial: FrameMaterial;
   brakeSystem: BrakeSystem;
   brakesType: BrakesType;
