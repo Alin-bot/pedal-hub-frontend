@@ -3,8 +3,9 @@ import { useParams } from "react-router-dom";
 import { IBrand } from "../../../api/model/IBrand";
 import { useEffect, useState } from "react";
 import { BrandServiceImpl, IBrandService } from "../../../api/BrandApi";
-import { Box, CircularProgress, TextField } from "@mui/material";
+import { Box, CircularProgress, Grid, TextField } from "@mui/material";
 import NavigationBar from "../../Common/Navigationbar";
+import BikeBox from "../../Bike/Details/BikeBox";
 
 const brandService: IBrandService = new BrandServiceImpl();
 
@@ -42,6 +43,16 @@ const BrandDetailsPage = () => {
         <div>
           <p>{brand.description}</p>
         </div>
+        <h2>Bikes:</h2>
+        <Grid container>
+          <Box display="flex" flexDirection="row" flexWrap="wrap">
+            {brand.bikeList.map((bike) => (
+              <Grid item xs={2} display="flex" alignItems="center">
+                <BikeBox bike={bike} />
+              </Grid>
+            ))}
+          </Box>
+        </Grid>
       </Box>
     </>
   );

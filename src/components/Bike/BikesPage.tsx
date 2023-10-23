@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { BikeServiceImpl, IBikeService } from "../../api/BikeApi";
-import { BikeDTO } from "../../api/model/IBike";
-import { Box, Button, CircularProgress, Grid, TextField } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { IBike } from "../../api/model/IBike";
+import { CircularProgress, Grid, TextField } from "@mui/material";
 import NavigationBar from "../Common/Navigationbar";
+import BikeBox from "./Details/BikeBox";
 
 const bikeService: IBikeService = new BikeServiceImpl();
 
 const BikesPage = () => {
-  const navigate = useNavigate();
-
   const [loadingItems, setLoadingItems] = useState<boolean>();
-  const [bikes, setBikes] = useState<BikeDTO[]>();
+  const [bikes, setBikes] = useState<IBike[]>();
 
   useEffect(() => {
     let isMounted = true;
@@ -41,19 +39,8 @@ const BikesPage = () => {
       <NavigationBar leftText="Bikes list" />
       <Grid container>
         {bikes.map((bike) => (
-          <Grid item xs={2} height={200} display="flex" alignItems="center">
-            <Box width={200} height="100%">
-              <Box height={150} border="solid"></Box>
-              <Button
-                fullWidth
-                key={bike.id}
-                variant="contained"
-                color="success"
-                onClick={() => navigate(`/bikes/${bike.id}`)}
-              >
-                {bike.name}
-              </Button>
-            </Box>
+          <Grid item xs={2} display="flex" alignItems="center">
+            <BikeBox bike={bike} />
           </Grid>
         ))}
       </Grid>

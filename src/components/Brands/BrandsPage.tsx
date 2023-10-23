@@ -41,8 +41,8 @@ const BrandsPage = () => {
       <NavigationBar leftText={`Brands list`} />
       <Grid container>
         {brands.map((brand) => (
-          <Grid item xs={2} height={200} display="flex" alignItems="center">
-            <Box width={200} height="100%">
+          <Grid item xs={2} display="flex" alignItems="center">
+            <Box width={200} height={200}>
               <Box height={50} border="solid"></Box>
               <Button
                 fullWidth

@@ -1,8 +1,8 @@
 import { axiosClient } from "./Api";
-import { BikeDTO, IBike } from "./model/IBike";
+import { IBike } from "./model/IBike";
 
 export interface IBikeService {
-  getBikes(): Promise<{ data: BikeDTO[] }>;
+  getBikes(): Promise<{ data: IBike[] }>;
   getBikeById(id: number): Promise<{ data: IBike }>;
   getBikesByBrandName(brandName: string): Promise<{ data: IBike[] }>;
   getBikesByCategoryAndYear(
@@ -13,7 +13,7 @@ export interface IBikeService {
 }
 
 export class BikeServiceImpl implements IBikeService {
-  public async getBikes(): Promise<{ data: BikeDTO[] }> {
+  public async getBikes(): Promise<{ data: IBike[] }> {
     return axiosClient.get("/bikes");
   }
 
