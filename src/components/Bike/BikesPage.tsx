@@ -20,7 +20,7 @@ const BikesPage = () => {
       const response = await bikeService.getBikes();
 
       if (!isMounted) return;
-      setBikes(response.data);
+      setBikes(response.data.content);
       setLoadingItems(false);
     };
     fetchItems();
