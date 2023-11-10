@@ -16,7 +16,7 @@ const NavigationBar = (props: NavigateBarProps) => {
         <Grid item xs={5}>
           <Stack direction="row" alignItems="center" height="100%">
             <Box color="white" fontSize={20} fontWeight="bold">
-              {leftText ? leftText : "Left"}
+              {leftText ? leftText : ""}
             </Box>
           </Stack>
         </Grid>
