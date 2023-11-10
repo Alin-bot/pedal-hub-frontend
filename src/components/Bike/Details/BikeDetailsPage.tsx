@@ -32,7 +32,7 @@ const BrandDetailsPage = () => {
       if (!isMounted) return;
       setBike(response.data);
 
-      if (bike?.brandID) {
+      if (bike?.brandId) {
         const brandResponse = await brandService.getBrandById(bike?.brandId!);
 
         if (!isMounted) return;
@@ -46,7 +46,7 @@ const BrandDetailsPage = () => {
     return () => {
       isMounted = false;
     };
-  }, [bikeId, bike]);
+  }, [bikeId, bike?.brandId]);
 
   const getBikeTitle = (
     brandName: string | undefined,
