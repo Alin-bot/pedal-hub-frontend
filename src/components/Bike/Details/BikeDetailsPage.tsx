@@ -46,7 +46,7 @@ const BrandDetailsPage = () => {
     return () => {
       isMounted = false;
     };
-  }, [bikeId]);
+  }, [bikeId, bike]);
 
   const getBikeTitle = (
     brandName: string | undefined,
