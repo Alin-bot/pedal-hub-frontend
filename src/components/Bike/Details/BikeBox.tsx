@@ -1,4 +1,4 @@
-import { Box, Button } from "@mui/material";
+import { Box, Button, Chip, Stack } from "@mui/material";
 import { IBike } from "../../../api/model/IBike";
 import { useNavigate } from "react-router-dom";
 
@@ -10,18 +10,20 @@ const BikeBox = ({ bike }: BikeBoxProps) => {
   const navigate = useNavigate();
 
   return (
-    <Box width={200}>
-      <Box height={150} border="solid"></Box>
-      <Button
-        fullWidth
-        key={bike.id}
-        variant="contained"
-        color="success"
-        onClick={() => navigate(`/bikes/${bike.id}`)}
-      >
+    <Stack>
+      <Stack direction="row" gap={1}>
+        <Chip label={bike.year} />
+        <Chip label={`${bike.price} €`} />
+      </Stack>
+
+      <Box height={150} width={300} border="dotted"></Box>
+      <Button key={bike.id} onClick={() => navigate(`/bikes/${bike.id}`)}>
         {bike.name}
       </Button>
-    </Box>
+      <Stack p={1} border="solid" borderRadius={3} borderColor="lightgrey">
+        brand
+      </Stack>
+    </Stack>
   );
 };
 
